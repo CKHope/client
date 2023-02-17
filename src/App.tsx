@@ -10,13 +10,35 @@ import {
   ErrorComponent,
 } from "@pankod/refine-mui";
 
+// Import icons
+import {
+  VillaOutlined,
+  PeopleAltOutlined,
+  StarOutlineRounded,
+  ChatBubbleOutline,
+  AccountCircleOutlined,
+  Dashboard,
+} from "@mui/icons-material";
+
 import dataProvider from "@pankod/refine-simple-rest";
 import { MuiInferencer } from "@pankod/refine-inferencer/mui";
 import routerProvider from "@pankod/refine-react-router-v6";
 import axios, { AxiosRequestConfig } from "axios";
 import { ColorModeContextProvider } from "contexts";
 import { Title, Sider, Layout, Header } from "components/layout";
-import { Login } from "pages/login";
+
+import {
+  Login,
+  Home,
+  Agents,
+  MyProfile,
+  PropertyDetails,
+  AllProperties,
+  CreateProperty,
+  AgentProfile,
+  EditProperty,
+} from "pages";
+
 import { CredentialResponse } from "interfaces/google";
 import { parseJwt } from "utils/parse-jwt";
 
@@ -97,13 +119,41 @@ function App() {
           ReadyPage={ReadyPage}
           catchAll={<ErrorComponent />}
           resources={[
+            // {
+            //   name: "posts",
+            //   list: MuiInferencer,
+            //   edit: MuiInferencer,
+            //   show: MuiInferencer,
+            //   create: MuiInferencer,
+            //   canDelete: true,
+            // },
             {
-              name: "posts",
+              name: "properties",
               list: MuiInferencer,
-              edit: MuiInferencer,
-              show: MuiInferencer,
-              create: MuiInferencer,
-              canDelete: true,
+              icon:<VillaOutlined/>,
+            },
+            {
+              name: "agents",
+              list: MuiInferencer,
+              icon: <PeopleAltOutlined />,
+            },
+            {
+              name: "reviews",
+              list: MuiInferencer,
+              icon:<StarOutlineRounded />,
+            },
+            {
+              name: "messages",
+              list: MuiInferencer,
+              icon:<ChatBubbleOutline />,
+            },
+            {
+              name: "my-profile",
+              list: MuiInferencer,
+              options: {
+                label: "My Profile"
+              },
+              icon:<AccountCircleOutlined/>,
             },
           ]}
           Title={Title}
@@ -113,6 +163,7 @@ function App() {
           routerProvider={routerProvider}
           authProvider={authProvider}
           LoginPage={Login}
+          DashboardPage={Home}
         />
       </RefineSnackbarProvider>
     </ColorModeContextProvider>
