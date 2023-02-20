@@ -129,31 +129,35 @@ function App() {
             // },
             {
               name: "properties",
-              list: MuiInferencer,
-              icon:<VillaOutlined/>,
+              list: AllProperties,
+              show: PropertyDetails,
+              create: CreateProperty,
+              edit: EditProperty,
+              icon: <VillaOutlined />,
             },
             {
               name: "agents",
-              list: MuiInferencer,
+              list: Agents,
+              show: AgentProfile,
               icon: <PeopleAltOutlined />,
             },
             {
               name: "reviews",
-              list: MuiInferencer,
-              icon:<StarOutlineRounded />,
+              list: Home,
+              icon: <StarOutlineRounded />,
             },
             {
               name: "messages",
-              list: MuiInferencer,
-              icon:<ChatBubbleOutline />,
+              list: Home,
+              icon: <ChatBubbleOutline />,
             },
             {
               name: "my-profile",
-              list: MuiInferencer,
+              list: MyProfile,
               options: {
-                label: "My Profile"
+                label: "My Profile",
               },
-              icon:<AccountCircleOutlined/>,
+              icon: <AccountCircleOutlined />,
             },
           ]}
           Title={Title}
